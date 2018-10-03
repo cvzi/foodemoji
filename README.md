@@ -39,9 +39,16 @@ Gebratenes Hähnchen mit Hähnchenschnitzel :rooster:"""
 ```
 
 
+Install
+-------
+
+`pip install german-foodemoji`
+
+See: https://pypi.org/project/german-foodemoji/
+
 
 ## Requirements:
- * Python 3   
+ * Python 2/3   
   
 To actually print the unicode emojis and for the units tests the package [emoji](https://github.com/carpedm20/emoji)>=0.5.0 is required:
  * `pip install emoji`
