@@ -17,5 +17,5 @@ script:
   - python setup.py install
   - nosetests --with-coverage # Run nose with coverage support
   - pytest
-#after_success:
+after_success:
   - coveralls #upload reports to coveralls.io
