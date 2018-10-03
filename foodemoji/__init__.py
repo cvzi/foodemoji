@@ -1,4 +1,5 @@
 ﻿# -*- coding: utf-8 -*-
+# https://github.com/cvzi/foodemoji
 import pkg_resources
 import json
 import re

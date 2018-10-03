@@ -68,7 +68,7 @@
     ":pancakes:" : ["cr.pe", "eierkuchen", "palatschinken", "pfannkuchen", "rührei", "omelett", "(\\w|\\s|^)pancake(\\s|$|\\w)"],
     ":chocolate_bar:" : ["schoko", "([^\\:]|^)chocolat"],
     ":ice_cream:" : ["(\\b|\\s|^)eis(\\b|\\s|$)"],
-    ":doughnut:" : ["([^\\:]|^|\\b|\\s)doughnut", "donut"],
+    ":doughnut:" : ["([^\\:]|^|\\b|\\s)doughnut([^:]|$)", "donut"],
     ":croissant:" : ["([^\\:]|^)croissant"],
     ":hot_beverage:" : ["kaffee"],
     ":beer_mug:" : ["bier(\\b|\\s)"],
