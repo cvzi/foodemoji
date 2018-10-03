@@ -33,7 +33,7 @@ Gebratenes Hähnchen mit Hähnchenschnitzel"""
 """Gegrillte Hähnchenbrust :rooster: mit gekochter Hähnchenbrust :rooster:
 Gebratenes Hähnchen :rooster: mit Hähnchenschnitzel :rooster:"""
 
->>> print(foodemoji.decorate(text2))
+>>> print(foodemoji.decorate(text2, line_by_line=True))
 """Gegrillte Hähnchenbrust mit gekochter Hähnchenbrust :rooster:
 Gebratenes Hähnchen mit Hähnchenschnitzel :rooster:"""
 ```

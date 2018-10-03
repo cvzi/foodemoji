@@ -7,9 +7,9 @@ try:
     import foodemoji
 except:
     import os
-    sys.path.insert(0, '../..')
+    sys.path.insert(0, '..')
     import foodemoji
-    print("Imported foodemoji from %s" % os.path.join(os.path.abspath("../.."), "foodemoji"))
+    print("Imported foodemoji from %s" % os.path.join(os.path.abspath(".."), "foodemoji"))
 
 
 try:

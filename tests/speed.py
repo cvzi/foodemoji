@@ -7,9 +7,9 @@ import timeit
 try:
     import foodemoji
 except:
-    sys.path.insert(0, '../..')
+    sys.path.insert(0, '..')
     import foodemoji
-    print("Imported foodemoji from %s" % os.path.join(os.path.abspath("../.."), "foodemoji"))
+    print("Imported foodemoji from %s" % os.path.join(os.path.abspath(".."), "foodemoji"))
 
 PY2 = sys.version_info.major is 2
 
