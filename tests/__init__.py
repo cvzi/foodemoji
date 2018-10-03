@@ -4,4 +4,4 @@ Unittests for foodemoji
 """
 
 
-from . import *
+#from . import *

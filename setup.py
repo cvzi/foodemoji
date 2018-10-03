@@ -22,9 +22,11 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/cvzi/foodemoji",
     packages=["foodemoji"],
-    package_dir={'foodemoji': 'foodemoji'},
-    package_data={'foodemoji': ['foodemojis.json']},
+    package_dir={"foodemoji": "foodemoji"},
+    package_data={"foodemoji": ["foodemojis.json"]},
     zip_safe=True,
+    test_suite="nose.collector",
+    tests_require=["emoji", "nose"],
     classifiers=(
         "Programming Language :: Python",
         "Programming Language :: Python :: 2",

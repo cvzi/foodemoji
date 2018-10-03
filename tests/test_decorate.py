@@ -264,7 +264,7 @@ def test_valid_emojis():
                 raise e
                 
                 
-def test_book():
+def book():
     import os
     import emoji
     try:
@@ -294,15 +294,20 @@ def test_book():
     
     with open('italienische-reise_emoji.txt', 'wb') as fres:
         fres.write(text.encode('utf-16'))
-    
+
+def nobook():
+    for fname, f in list(globals().items()):
+        if fname.startswith('test_'):
+            print("%s()" % fname)
+            f()
+            print("Ok.")
+
+
 
 
 if __name__ == '__main__':
     if 'idlelib' in sys.modules:
         print("Please run this file in a console!")
     
-    for fname, f in list(globals().items()):
-        if fname.startswith('test_'):
-            print("%s()" % fname)
-            f()
-            print("Ok.")
+    nobook()
+    book()
