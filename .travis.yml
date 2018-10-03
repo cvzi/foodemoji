@@ -15,7 +15,9 @@ install:
 # command to run tests
 script:
   - python setup.py install
-  - nosetests --with-coverage # Run nose with coverage support
+    # Run nose with coverage support
+  - nosetests --with-coverage
   - pytest
+#upload reports to coveralls.io
 after_success:
-  - coveralls #upload reports to coveralls.io
+  - coveralls 
