@@ -9,6 +9,13 @@ python:
 # command to install dependencies
 install:
   - pip install -r tests/requirements.txt
+  - pip install python-coveralls
+  - pip install coverage
+  - pip install nose
 # command to run tests
 script:
+  - python setup.py install
+  - nosetests --with-coverage # Run nose with coverage support
   - pytest
+#after_success:
+  - coveralls #upload reports to coveralls.io
