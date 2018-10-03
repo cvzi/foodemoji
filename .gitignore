@@ -1,5 +1,5 @@
-foodemoji/tests/italienische-reise.txt
-foodemoji/tests/italienische-reise_emoji.txt
+tests/italienische-reise.txt
+tests/italienische-reise_emoji.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
