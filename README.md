@@ -1,4 +1,7 @@
 # foodemoji
+
+[![Build Status](https://travis-ci.org/cvzi/foodemoji.svg?branch=master)](https://travis-ci.org/cvzi/foodemoji)
+
 Decorate a German text (e.g. restaurant menu) with food emojis 
 
 
