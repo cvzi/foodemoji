@@ -14,10 +14,11 @@ install:
   - pip install nose
 # command to run tests
 script:
-  - python setup.py install
   - python setup.py test
   - pytest
   - nosetests
-  - coverage run tests/test_decorate.py
+  - coverage run tests/test_*.py
+# must be last
+  - python setup.py install 
 after_success:
   - coveralls
