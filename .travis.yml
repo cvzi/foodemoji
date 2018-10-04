@@ -17,6 +17,7 @@ script:
   - python setup.py install
   - python setup.py test
   - pytest
-  - nosetests --with-coverage
+  - nosetests
+  - coverage run tests/test_*.py
 after_success:
   - coveralls
