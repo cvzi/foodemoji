@@ -1,6 +1,7 @@
 [run]
 source = foodemoji
 branch = False
+include = foodemoji/*
 
 [report]
 exclude_lines =
