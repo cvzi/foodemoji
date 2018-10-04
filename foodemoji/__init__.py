@@ -13,7 +13,7 @@ Unicode country code emoji flags for Python
     >>> emoji.emojize(foodemoji.decorate("Apfelrotkraut"))
     'Apfelrotkraut 🍎'
 """
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 __author__ = 'cuzi'
 __email__ = 'cuzi@openmail.cc' 
 __source__ = 'https://github.com/cvzi/foodemoji'
@@ -149,8 +149,6 @@ def decorate_lines(text):
                         last = set_position.pop()
                         line = line[:last[0]] + line[last[1]:]
                         cursor -= last[1] - last[0]
-                        if cursor < 0:
-                            cursor = 0
                         m = regex.search(line, pos=cursor)
                     
                     # find next space:
