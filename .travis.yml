@@ -1,11 +1,11 @@
 language: python
 python:
-  - "2.7"
-  - "3.4"
-  - "3.5"
+#  - "2.7"
+#  - "3.4"
+#  - "3.5"
   - "3.6"
-  - "3.7-dev"  # 3.7 development branch
-  - "pypy3.5"
+#  - "3.7-dev"  # 3.7 development branch
+#  - "pypy3.5"
 # command to install dependencies
 install:
   - pip install -r tests/requirements.txt
@@ -18,6 +18,6 @@ script:
   - python setup.py test
   - pytest
   - nosetests
-  - coverage run tests/test_*.py
+  - coverage run tests/test_decorate.py
 after_success:
   - coveralls
