@@ -1,6 +1,8 @@
 # foodemoji
+[![foodemoji on PyPI](https://img.shields.io/pypi/v/german-foodemoji.svg)](https://pypi.python.org/pypi/german-foodemoji)
+[![Build Status](https://travis-ci.org/cvzi/german-foodemoji.svg?branch=master)](https://travis-ci.org/cvzi/german-foodemoji)
+[![Python Versions](https://img.shields.io/pypi/pyversions/german-foodemoji.svg)](https://pypi.python.org/pypi/german-foodemoji)
 
-[![Build Status](https://travis-ci.org/cvzi/foodemoji.svg?branch=master)](https://travis-ci.org/cvzi/foodemoji)
 
 Decorate a German text (e.g. restaurant menu) with food emojis 
 

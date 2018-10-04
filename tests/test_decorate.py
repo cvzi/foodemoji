@@ -5,11 +5,12 @@ import distutils.version
 
 try:
     import foodemoji
-except:
+except ImportError:
     import os
-    sys.path.insert(0, '..')
+    include = os.path.relpath(os.path.join(os.path.dirname(__file__), ".."))
+    sys.path.insert(0, include)
     import foodemoji
-    print("Imported foodemoji from %s" % os.path.join(os.path.abspath(".."), "foodemoji"))
+    print("Imported foodemoji from %s" % os.path.abspath(os.path.join(include, "foodemoji")))
 
 
 try:
@@ -139,6 +140,10 @@ def test_position_in_whitespace():
         ('Hähnchenbrust\nApfelrotkraut', 'Hähnchenbrust :rooster:\nApfelrotkraut :red_apple:'),
         ('Hähnchenbrust.\nApfelrotkraut', 'Hähnchenbrust. :rooster:\nApfelrotkraut :red_apple:'),
         ('Hähnchenbrust  Apfelrotkraut', 'Hähnchenbrust :rooster:  Apfelrotkraut :red_apple:'),
+        ('pancake', 'pancake :pancakes:'),
+        ('pancakes ', 'pancakes :pancakes: '),
+        ('Pancake  Gericht', 'Pancake :pancakes:  Gericht'),
+        ('Pancake  ', 'Pancake :pancakes:  '),
     ]
     for text, text_with_emoji in pairs:
         text = text.decode("utf8") if PY2 else text
@@ -149,6 +154,17 @@ def test_position_in_whitespace():
             desc = "Error: `%s` != `%s`" % (text_with_emoji,foodemoji.decorate(text))
             e.args = (desc, )
             raise e
+            
+    for text, text_with_emoji in pairs:
+        text = text.decode("utf8") if PY2 else text
+        text_with_emoji = text_with_emoji.decode("utf8") if PY2 else text_with_emoji
+        try:
+            assert text_with_emoji == foodemoji.decorate(text, line_by_line=True)
+        except AssertionError as e:
+            desc = "Error: `%s` != `%s`" % (text_with_emoji,foodemoji.decorate(text, line_by_line=True))
+            e.args = (desc, )
+            raise e
+            
 
 def test_same_result_whole_linebyline_approach():
     examples = [

@@ -7,9 +7,11 @@ import timeit
 try:
     import foodemoji
 except:
-    sys.path.insert(0, '..')
+    import os
+    include = os.path.relpath(os.path.join(os.path.dirname(__file__), ".."))
+    sys.path.insert(0, include)
     import foodemoji
-    print("Imported foodemoji from %s" % os.path.join(os.path.abspath(".."), "foodemoji"))
+    print("Imported foodemoji from %s" % os.path.abspath(os.path.join(include, "foodemoji")))
 
 PY2 = sys.version_info.major is 2
 

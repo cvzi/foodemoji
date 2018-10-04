@@ -58,10 +58,10 @@ def _load():
     global _wordend
     
     # Load json file
-    if os.path.isfile(os.path.join(os.path.dirname(__file__), 'foodemojis.json')):
+    if os.path.isfile(os.path.join(os.path.dirname(__file__), 'foodemojis.json')): # pragma: no cover
         with open(os.path.join(os.path.dirname(__file__), 'foodemojis.json'), 'rb') as fs:
             emoji_list = json.loads(fs.read().decode('utf-8'))
-    else:
+    else: # pragma: no cover
         with pkg_resources.resource_stream(__name__, 'foodemojis.json') as fs:
             emoji_list = json.loads(fs.read().decode('utf-8'))
     
