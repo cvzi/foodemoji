@@ -94,6 +94,10 @@ def decorate_whole(text):
     """Decorates text with food-specific emojis
      - Whole text at once approch
      - Emoji can occur several times per line
+     
+    :param str text: the text to decorate
+    :return: the decorated text
+    :rtype: str
     """
     
     if len(_emoji_re) == 0:
