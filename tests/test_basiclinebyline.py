@@ -29,7 +29,16 @@ def test_basic():
         ("Tintenfisch", "Tintenfisch :squid:"), # no fish
         ("Haifisch", "Haifisch :fish:"),
         ("Grießflammerie", "Grießflammerie"), # lamm
-        
+        ("nordamerikanisch", "nordamerikanisch :flag_for_United_States:"),
+        ("südamerikanisch", "südamerikanisch"),
+        ("Süßer Reis", "Süßer Reis :cooked_rice:"),
+        ("Reis", "Reis :cooked_rice:"),
+        ("Greis", "Greis"),
+        ("Kürbis Kompott", "Kürbis :jack-o-lantern: Kompott"),
+        ("Kürbissuppe", "Kürbissuppe :steaming_bowl: :jack-o-lantern:"),
+        ("Hokkaidokürbissuppe", "Hokkaidokürbissuppe :steaming_bowl: :jack-o-lantern:"),
+        ("Hokkaido-Kürbissuppe", "Hokkaido-Kürbissuppe :steaming_bowl: :jack-o-lantern:"),
+        ("Hokkaido Kürbissuppe", "Hokkaido Kürbissuppe :steaming_bowl: :jack-o-lantern:"),
     ]
     for text, text_with_emoji in pairs:
         try:
@@ -39,16 +48,10 @@ def test_basic():
             e.args = (desc, )
             raise e
 
-def run_all():
-    for fname, f in list(globals().items()):
-        if fname.startswith('test_'):
-            print("%s()" % fname)
-            f()
-            print("Ok.")
-
 
 if __name__ == '__main__':
     if 'idlelib' in sys.modules:
         print("Please run this file in a console!")
     
-    run_all()
+    test_basic()
+    print("Ok.")
