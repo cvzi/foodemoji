@@ -71,7 +71,7 @@ def test_basic():
         ("Tintenfisch", "Tintenfisch :squid:"), # no fish
         ("Haifisch", "Haifisch :fish:"),
         ("Grießflammerie", "Grießflammerie"), # lamm
-        (u"Kürbis", u"Kürbis :jack-o-lantern:"), # lamm
+        (u"Kürbis", u"Kürbis :jack-o-lantern:")
         
     ]
     for text, text_with_emoji in pairs:
