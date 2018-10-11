@@ -34,11 +34,7 @@ def test_basic():
         ("Süßer Reis", "Süßer Reis :cooked_rice:"),
         ("Reis", "Reis :cooked_rice:"),
         ("Greis", "Greis"),
-        ("Kürbis Kompott", "Kürbis :jack-o-lantern: Kompott"),
-        ("Kürbissuppe", "Kürbissuppe :steaming_bowl: :jack-o-lantern:"),
-        ("Hokkaidokürbissuppe", "Hokkaidokürbissuppe :steaming_bowl: :jack-o-lantern:"),
-        ("Hokkaido-Kürbissuppe", "Hokkaido-Kürbissuppe :steaming_bowl: :jack-o-lantern:"),
-        ("Hokkaido Kürbissuppe", "Hokkaido Kürbissuppe :steaming_bowl: :jack-o-lantern:"),
+        (u"Kürbis", u"Kürbis :jack-o-lantern:")
     ]
     for text, text_with_emoji in pairs:
         try:
