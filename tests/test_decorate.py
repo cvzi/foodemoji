@@ -39,6 +39,7 @@ def test_check_circular():
 
 def test_good_regex():
     def is_in_brackets(query, text):
+    
         if query in text:
             cursor = 0
             while query in text[cursor:]:
@@ -71,7 +72,8 @@ def test_basic():
         ("Tintenfisch", "Tintenfisch :squid:"), # no fish
         ("Haifisch", "Haifisch :fish:"),
         ("Grießflammerie", "Grießflammerie"), # lamm
-        (u"Kürbis", u"Kürbis :jack-o-lantern:")
+        (u"Kürbis", u"Kürbis :jack-o-lantern:"),
+        ("Reis\nPommes frites", "Reis :cooked_rice:\nPommes frites :french_fries:"),
         
     ]
     for text, text_with_emoji in pairs:

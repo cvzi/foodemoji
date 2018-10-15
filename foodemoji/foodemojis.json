@@ -62,7 +62,7 @@
     ":cooked_rice:" : ["risotto", "gemüsereis", "kräuterreis", "jasminreis", "sushireis", 
                       "wildreis", "mochireis", "kurkumareis", "butterreis", "basmatireis", 
                       "kornreis", "naturreis", "milchreis", "duftreis", "risi(-|\\s)?(p|b)isi",
-                      "ingwerreis", "pfannenreis", "djuvecreis", "(\\b|\\s|^|-)reis([^etn]{1,3}|$)", "pila[fw]", "(\\b|\\s|^)reis($|\\b)"],
+                      "ingwerreis", "pfannenreis", "djuvecreis", "pila[fw]", "(^|\\s)reis($|\\b)"],
     ":bento_box:" : ["sushi","([^\\:]|^)bento"],
     ":shortcake:" : ["(\\b|\\s|^)kuchen","torte(?!(llini|lloni))"],
     ":cookie:" : ["keks","([^\\:]|^)cookie"],

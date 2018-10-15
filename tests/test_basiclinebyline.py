@@ -34,7 +34,8 @@ def test_basic():
         ("Süßer Reis", "Süßer Reis :cooked_rice:"),
         ("Reis", "Reis :cooked_rice:"),
         ("Greis", "Greis"),
-        (u"Kürbis", u"Kürbis :jack-o-lantern:")
+        (u"Kürbis", u"Kürbis :jack-o-lantern:"),
+        ("Reis\nPommes frites", "Reis :cooked_rice:\nPommes frites :french_fries:"),
     ]
     for text, text_with_emoji in pairs:
         try:
