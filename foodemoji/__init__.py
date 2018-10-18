@@ -13,7 +13,7 @@ Unicode country code emoji flags for Python
     >>> emoji.emojize(foodemoji.decorate("Apfelrotkraut"))
     'Apfelrotkraut 🍎'
 """
-__version__ = '1.0.2'
+__version__ = '1.0.3'
 __author__ = 'cuzi'
 __email__ = 'cuzi@openmail.cc' 
 __source__ = 'https://github.com/cvzi/foodemoji'
@@ -66,7 +66,7 @@ def _load():
             emoji_list = json.loads(fs.read().decode('utf-8'))
     
     # Pre compile regular expressions
-    _wordend = re.compile('(,|\(|\[|\s|\b|$)', flags=re.MULTILINE)
+    _wordend = re.compile('(:|,|\\(|\\[|\\s|$)', flags=re.MULTILINE)
     
     _emoji_re = {}
     for emo in emoji_list:

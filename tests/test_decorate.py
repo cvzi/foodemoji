@@ -74,7 +74,9 @@ def test_basic():
         ("Grießflammerie", "Grießflammerie"), # lamm
         (u"Kürbis", u"Kürbis :jack-o-lantern:"),
         ("Reis\nPommes frites", "Reis :cooked_rice:\nPommes frites :french_fries:"),
-        
+        ("Sate sauce", "Sate :flag_for_Indonesia: sauce"),
+        ("Mensateria", "Mensateria"),
+        ("Satesauce", "Satesauce :flag_for_Indonesia:"),
     ]
     for text, text_with_emoji in pairs:
         try:
@@ -137,6 +139,7 @@ def test_position_in_whitespace():
         ('Hähnchenbrust.', 'Hähnchenbrust. :rooster:'),
         ('Hähnchenbrust. ', 'Hähnchenbrust. :rooster: '),
         ('Hähnchenbrust .', 'Hähnchenbrust :rooster: .'),
+        ('Hähnchenbrust: Apfelrotkraut', 'Hähnchenbrust :rooster:: Apfelrotkraut :red_apple:'),
         ('Hähnchenbrust.\n', 'Hähnchenbrust. :rooster:\n'),
         ('Hähnchenbrust.\r\n', 'Hähnchenbrust. :rooster:\r\n'),
         ('Hähnchenbrust Apfelrotkraut', 'Hähnchenbrust :rooster: Apfelrotkraut :red_apple:'),
