@@ -4,11 +4,9 @@
 [![Coverage Status](https://coveralls.io/repos/github/cvzi/foodemoji/badge.svg?branch=master)](https://coveralls.io/github/cvzi/foodemoji?branch=master)
 [![Build Status](https://travis-ci.org/cvzi/foodemoji.svg?branch=master)](https://travis-ci.org/cvzi/foodemoji)
 
-Decorate a German text (e.g. restaurant menu) with food emojis 
-
+Decorate a German text (e.g. restaurant menu) with food emojis
 
 ## Example
-
 ```python
 >>> import foodemoji
 >>> text = """Hähnchenbrust mit Apfelrotkraut
@@ -43,17 +41,13 @@ Gebratenes Hähnchen :rooster: mit Hähnchenschnitzel :rooster:"""
 Gebratenes Hähnchen mit Hähnchenschnitzel :rooster:"""
 ```
 
-
-Install
--------
-
+## Install
 `pip install german-foodemoji`
 
-See: https://pypi.org/project/german-foodemoji/
+See: [https://pypi.org/project/german-foodemoji/](https://pypi.org/project/german-foodemoji/)
 
+## Requirements
+* Python 2/3
 
-## Requirements:
- * Python 2/3   
-  
 To actually print the unicode emojis and for the units tests the package [emoji](https://github.com/carpedm20/emoji)>=0.5.0 is required:
- * `pip install emoji`
+* `pip install emoji`
