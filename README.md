@@ -1,4 +1,5 @@
 # foodemoji
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/37b81de096584b068763271c6a52e441)](https://app.codacy.com/app/cvzi/foodemoji?utm_source=github.com&utm_medium=referral&utm_content=cvzi/foodemoji&utm_campaign=Badge_Grade_Dashboard)
 [![foodemoji on PyPI](https://img.shields.io/pypi/v/german-foodemoji.svg)](https://pypi.python.org/pypi/german-foodemoji)
 [![Python Versions](https://img.shields.io/pypi/pyversions/german-foodemoji.svg)](https://pypi.python.org/pypi/german-foodemoji)
 [![Coverage Status](https://coveralls.io/repos/github/cvzi/foodemoji/badge.svg?branch=master)](https://coveralls.io/github/cvzi/foodemoji?branch=master)
