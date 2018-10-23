@@ -13,7 +13,7 @@ Unicode country code emoji flags for Python
     >>> emoji.emojize(foodemoji.decorate("Apfelrotkraut"))
     'Apfelrotkraut 🍎'
 """
-__version__ = '1.0.3'
+__version__ = '1.0.4'
 __author__ = 'cuzi'
 __email__ = 'cuzi@openmail.cc'
 __source__ = 'https://github.com/cvzi/foodemoji'
