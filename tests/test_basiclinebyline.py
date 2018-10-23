@@ -49,6 +49,6 @@ def test_basic():
 if __name__ == '__main__':
     if 'idlelib' in sys.modules:
         print("Please run this file in a console!")
-    
+
     test_basic()
     print("Ok.")

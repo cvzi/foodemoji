@@ -7,7 +7,6 @@ import timeit
 try:
     import foodemoji
 except ImportError:
-    import os
     include = os.path.relpath(os.path.join(os.path.dirname(__file__), ".."))
     sys.path.insert(0, include)
     import foodemoji
@@ -79,10 +78,10 @@ book = ""
 
 def _setup():
     global book
-    
+
     filename = 'italienische-reise.txt'
     url = 'https://github.com/GITenberg/Italienische-Reise-Band-1_2404/raw/master/2404-8.txt'
-    
+
     if not os.path.isfile(filename):
         if PY2:
             import urllib2
@@ -106,7 +105,7 @@ def test_long_text_100():
 def test_long_text_linebyline_100():
     x = foodemoji.decorate(text, line_by_line=True)
     return x[0] == text[0]
-    
+
 def test_short_text_300():
     x = foodemoji.decorate(text_short)
     return x[0] == text_short[0]
@@ -114,7 +113,7 @@ def test_short_text_300():
 def test_short_text_linebyline_300():
     x = foodemoji.decorate(text_short, line_by_line=True)
     return x[0] == text_short[0]
-    
+
 def test_one_line_1000():
     x = foodemoji.decorate(text_one_line)
     return x[0] == text_one_line[0]
@@ -134,14 +133,14 @@ def test_book_linebyline_2():
 _setup()
 
 if __name__ == '__main__':
-    
+
     for fname in sorted(list(globals().keys())):
         if fname.startswith('test_'):
             if fname.split('_')[-1].isdigit():
                 N = int(fname.split('_')[-1])
             else:
                 N = 100
-                
+
             print("% 6dx\t\t%s():" % (N, fname))
             t = timeit.timeit('speed.%s()' % fname, setup='import speed', number=N)
             print("{:25.20f}".format(t))

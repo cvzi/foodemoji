@@ -39,7 +39,7 @@ def test_check_circular():
 
 def test_good_regex():
     def is_in_brackets(query, text):
-    
+
         if query in text:
             cursor = 0
             while query in text[cursor:]:
@@ -49,7 +49,7 @@ def test_good_regex():
                 if text.find("]", pos) == -1 and text.find(")", pos) == -1:
                     return False
                 cursor = pos + len(query)
-                
+
             return True
         else:
             return True
@@ -64,8 +64,8 @@ def test_good_regex():
                     e.args = (desc, )
                     raise e
 
-        
-        
+
+
 def test_basic():
     pairs = [
         ("Fish & chips", "Fish :fish: & chips :french_fries:"), # circular
@@ -85,8 +85,8 @@ def test_basic():
             desc = "Error: `%s` != `%s`" % (foodemoji.decorate(text), text_with_emoji)
             e.args = (desc, )
             raise e
-    
-    
+
+
 def test_example_text():
     text = """Hähnchenbrust mit Apfelrotkraut
     Vegetarische Maultaschen
@@ -99,7 +99,7 @@ def test_example_text():
                ':dumpling:', ':potato:', ':french_fries:',
                ':cow:', ':wine_glass:' ):
         assert x in text_with_emoji
-    
+
 
     text = """Wir essen Mousakás mit Pommes und öhren.\nDas Hackfleisch wird aus Oktopus zubereitet."""
     text = text.decode("utf8") if PY2 else text
@@ -160,7 +160,7 @@ def test_position_in_whitespace():
             desc = "Error: `%s` != `%s`" % (text_with_emoji,foodemoji.decorate(text))
             e.args = (desc, )
             raise e
-            
+
     for text, text_with_emoji in pairs:
         text = text.decode("utf8") if PY2 else text
         text_with_emoji = text_with_emoji.decode("utf8") if PY2 else text_with_emoji
@@ -170,23 +170,23 @@ def test_position_in_whitespace():
             desc = "Error: `%s` != `%s`" % (text_with_emoji,foodemoji.decorate(text, line_by_line=True))
             e.args = (desc, )
             raise e
-            
+
 
 def test_same_result_whole_linebyline_approach():
     examples = [
-        'Hähnchenbrust', 
-        'Hähnchenbrust.', 
-        'Hähnchenbrust. ', 
-        'Hähnchenbrust .', 
-        'Hähnchenbrust.\n', 
-        'Hähnchenbrust.\r\n', 
-        'Hähnchenbrust Apfelrotkraut', 
-        'Hähnchenbrust\nApfelrotkraut', 
-        'Hähnchenbrust.\nApfelrotkraut', 
-        'Hähnchenbrust  Apfelrotkraut', 
-        'Gegrillte Hähnchenbrust', 
-        'Gegrillte Hähnchenbrust ', 
-        'Gegrillte Hähnchenbrust. ', 
+        'Hähnchenbrust',
+        'Hähnchenbrust.',
+        'Hähnchenbrust. ',
+        'Hähnchenbrust .',
+        'Hähnchenbrust.\n',
+        'Hähnchenbrust.\r\n',
+        'Hähnchenbrust Apfelrotkraut',
+        'Hähnchenbrust\nApfelrotkraut',
+        'Hähnchenbrust.\nApfelrotkraut',
+        'Hähnchenbrust  Apfelrotkraut',
+        'Gegrillte Hähnchenbrust',
+        'Gegrillte Hähnchenbrust ',
+        'Gegrillte Hähnchenbrust. ',
     ]
     for text in examples:
         try:
@@ -212,15 +212,15 @@ def test_linebyline_multiple_occurrences():
     ]
     for text, text_with_emoji in pairs:
         text = text.decode("utf8") if PY2 else text
-        text_with_emoji = text_with_emoji.decode("utf8") if PY2 else text_with_emoji  
+        text_with_emoji = text_with_emoji.decode("utf8") if PY2 else text_with_emoji
         try:
             assert text_with_emoji == foodemoji.decorate(text, line_by_line=True)
         except AssertionError as e:
             desc = "Error: `%s` != `%s`" % (text_with_emoji,foodemoji.decorate(text, line_by_line=True))
             e.args = (desc, )
             raise e
-    
-    
+
+
 def test_valid_emojis():
     import emoji
 
@@ -234,7 +234,7 @@ def test_valid_emojis():
                 e.args = (desc, )
                 raise e
 
-            
+
             if not x.startswith(':flag_for_'):
                 try:
                     assert len(emoji.emojize(x, use_aliases=False)) in (1, 2)
@@ -264,7 +264,7 @@ def test_valid_emojis():
                 e.args = (desc, )
                 raise e
 
-            
+
             if not x.startswith(':flag_for_'):
                 try:
                     assert len(emoji.emojize(x, use_aliases=False)) == 1
@@ -284,15 +284,15 @@ def test_valid_emojis():
                 print("Length: %d" % len(emoji.emojize(x, use_aliases=True)))
                 e.args = ("Invalid emoji: `%s`" % x, )
                 raise e
-                
-                
+
+
 def test_book():
     import os
     import emoji
     try:
         filename = 'italienische-reise.txt'
         url = 'https://github.com/GITenberg/Italienische-Reise-Band-1_2404/raw/master/2404-8.txt'
-        
+
         if not os.path.isfile(filename):
             if PY2:
                 import urllib2
@@ -309,11 +309,12 @@ def test_book():
             with open(filename, 'rb') as fin:
                 text = fin.read().decode('utf-8')
     except Exception as e:
-        print("#### Skipping test_book() ####")
+        print("#### Skipping test_book(): ####")
+        print("#### %s" % str(e))
         return
-    
+
     text = emoji.emojize(foodemoji.decorate(text), use_aliases=True)
-    
+
     with open('italienische-reise_emoji.txt', 'wb') as fres:
         fres.write(text.encode('utf-16'))
 
@@ -330,5 +331,5 @@ def run_all():
 if __name__ == '__main__':
     if 'idlelib' in sys.modules:
         print("Please run this file in a console!")
-    
+
     run_all()
