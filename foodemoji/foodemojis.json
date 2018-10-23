@@ -89,7 +89,7 @@
     ":fire:" : ["feuer" ,"feurig"],
     ":smiling_face_with_horns:" : ["dia[bv]olo", "teufel","teufli"],
     ":shallow_pan_of_food:" : ["pfanne"],
-    ":steaming_bowl:" : ["suppe", "\\bramen", "klare\\s+brühe", "bouillon", "gemüse\\s+brühe"],
+    ":steaming_bowl:" : ["suppe", "\\bramen", "klare\\s+brühe", "bouillon", "gemüse\\s+brühe", "minestrone"],
     ":dragon:" : ["asia"],
     ":face_with_medical_mask:" : ["knoblauch", "aioli"],
 
@@ -130,7 +130,7 @@
     ":flag_for_Finland:" : ["finnisch"],
     ":flag_for_Faroe_Islands:" : ["färöisch"],
     ":flag_for_Switzerland:" : ["schweiz", "tessin", "zürich"],
-    ":flag_for_Austria:" : ["österreich", "tirol", "kärnten", "steiermark", "gulasch(?!suppe)", "kaiserschmarre?n", "germknödel", "linzer\\s*torte", "apfelstrudel"],
+    ":flag_for_Austria:" : ["österreich", "tirol", "kärnten", "steiermark", "kaiserschmarre?n", "germknödel", "linzer\\s*torte", "apfelstrudel"],
     ":flag_for_Israel:" : ["hebräisch", "koscher"],
     ":flag_for_Croatia:" : ["kroatisch", "[^_]croatia"],
     ":flag_for_Armenia:" : ["armenisch"],

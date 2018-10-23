@@ -1,13 +1,12 @@
 try:
     import foodemoji
-except:
+except ImportError:
     import sys
     import os
     sys.path.insert(0, '..')
     import foodemoji
     print("Imported foodemoji from %s" % os.path.join(os.path.abspath(".."), "foodemoji"))
-    
-    
+
 text = """Hähnchenbrust mit Apfelrotkraut
 Vegetarische Maultaschen
 Kartoffelknödel
