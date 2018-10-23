@@ -6,7 +6,7 @@ import timeit
 
 try:
     import foodemoji
-except:
+except ImportError:
     import os
     include = os.path.relpath(os.path.join(os.path.dirname(__file__), ".."))
     sys.path.insert(0, include)

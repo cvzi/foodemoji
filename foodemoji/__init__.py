@@ -15,7 +15,7 @@ Unicode country code emoji flags for Python
 """
 __version__ = '1.0.3'
 __author__ = 'cuzi'
-__email__ = 'cuzi@openmail.cc' 
+__email__ = 'cuzi@openmail.cc'
 __source__ = 'https://github.com/cvzi/foodemoji'
 __license__ = """
 MIT License
@@ -56,7 +56,7 @@ _PY2 = sys.version_info.major is 2
 def _load():
     global _emoji_re
     global _wordend
-    
+
     # Load json file
     if os.path.isfile(os.path.join(os.path.dirname(__file__), 'foodemojis.json')): # pragma: no cover
         with open(os.path.join(os.path.dirname(__file__), 'foodemojis.json'), 'rb') as fs:
@@ -64,10 +64,10 @@ def _load():
     else: # pragma: no cover
         with pkg_resources.resource_stream(__name__, 'foodemojis.json') as fs:
             emoji_list = json.loads(fs.read().decode('utf-8'))
-    
+
     # Pre compile regular expressions
     _wordend = re.compile('(:|,|\\(|\\[|\\s|$)', flags=re.MULTILINE)
-    
+
     _emoji_re = {}
     for emo in emoji_list:
         emokey = emo
@@ -80,7 +80,7 @@ def _load():
 
 def decorate(text, line_by_line=False):
     """Decorate text with food-specific emoji in the form ':emoji_name:'
-    
+
     :param str text: the text to decorate
     :param bool line_by_line: if true the text is decorated line by line and an emoji can only occur once per line.
     :return: the decorated text
@@ -94,15 +94,15 @@ def decorate_whole(text):
     """Decorates text with food-specific emojis
      - Whole text at once approch
      - Emoji can occur several times per line
-     
+
     :param str text: the text to decorate
     :return: the decorated text
     :rtype: str
     """
-    
+
     if len(_emoji_re) == 0:
         _load()
-    
+
     for emo in _emoji_re:
         for regex in _emoji_re[emo]:
             cursor = 0
@@ -114,14 +114,14 @@ def decorate_whole(text):
                     space = m.end()-1
                 else:  # find next whitespace or end of line
                     space = _wordend.search(text, pos=m.end()).start()
-                
+
                 # put emoji in the whitespace
                 text = text[:space] + ' ' + emo + text[space:]
-                
+
                 cursor = space + len(emo) + 1
-                
+
                 m = regex.search(text, pos=cursor)
-    
+
     return text
 
 def decorate_lines(text):
@@ -131,17 +131,16 @@ def decorate_lines(text):
     """
     if len(_emoji_re) == 0:
         _load()
-        
+
     # Split by lines
     text = re.split('(\r?\n)', text)
-    
+
     for emo in _emoji_re:
-        
-        for i in range(len(text)):
-            line = text[i]
+
+        for i, line in enumerate(text):
             if not line.strip():
                 continue
-            
+
             set_position = []
             for regex in _emoji_re[emo]:
                 cursor = 0
@@ -154,17 +153,17 @@ def decorate_lines(text):
                         line = line[:last[0]] + line[last[1]:]
                         cursor -= last[1] - last[0]
                         m = regex.search(line, pos=cursor)
-                    
+
                     # find next space:
                     lastchar = m.group(0)[-1]
                     if len(lastchar.strip()) == 0: # last char in pattern is white space
                         space = m.end()-1
                     else:  # find next whitespace or end of line
                         space = _wordend.search(line, pos=m.end()).start()
-                    
+
                     # put emoji in the whitespace
                     line = line[:space] + ' ' + emo + line[space:]
-                    
+
                     cursor = space + len(emo) + 1
 
                     # remember emoji position
@@ -172,10 +171,10 @@ def decorate_lines(text):
 
                     # search for next match
                     m = regex.search(line, pos=cursor)
-                    
+
                 text[i] = line
-                    
-    
+
+
     return ''.join(text)
 
 if __name__ == '__main__':
