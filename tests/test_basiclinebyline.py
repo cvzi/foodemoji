@@ -38,10 +38,12 @@ def test_basic():
         ("Reis\nPommes frites", "Reis :cooked_rice:\nPommes frites :french_fries:"),
     ]
     for text, text_with_emoji in pairs:
+        text = text.decode("utf8") if PY2 and not isinstance(text, unicode) else text
+        text_with_emoji = text_with_emoji.decode("utf8") if PY2 and not isinstance(text_with_emoji, unicode) else text_with_emoji
         try:
             assert text_with_emoji == foodemoji.decorate(text, line_by_line=True)
         except AssertionError as e:
-            desc = "Error: `%s` != `%s`" % (foodemoji.decorate(text, line_by_line=True), text_with_emoji)
+            desc = "Error: Got `%s` expected `%s`" % (foodemoji.decorate(text, line_by_line=True), text_with_emoji)
             e.args = (desc, )
             raise e
 

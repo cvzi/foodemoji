@@ -77,12 +77,20 @@ def test_basic():
         ("Sate sauce", "Sate :flag_for_Indonesia: sauce"),
         ("Mensateria", "Mensateria"),
         ("Satesauce", "Satesauce :flag_for_Indonesia:"),
+        ("Currygericht", "Currygericht :curry_rice:"),
+        ("Currysauce", "Currysauce"),
+        ("Currysoße", "Currysoße"),
+        ("Curry-soße", "Curry-soße"),
+        ("Currywurst", "Currywurst :pig:"),
+        ("Currydip", "Currydip"),
     ]
     for text, text_with_emoji in pairs:
+        text = text.decode("utf8") if PY2 and not isinstance(text, unicode) else text
+        text_with_emoji = text_with_emoji.decode("utf8") if PY2 and not isinstance(text_with_emoji, unicode) else text_with_emoji
         try:
             assert text_with_emoji == foodemoji.decorate(text)
         except AssertionError as e:
-            desc = "Error: `%s` != `%s`" % (foodemoji.decorate(text), text_with_emoji)
+            desc = "Error: `%s` should be `%s`" % (foodemoji.decorate(text).encode("utf8"), text_with_emoji.encode("utf8"))
             e.args = (desc, )
             raise e
 
@@ -94,18 +102,18 @@ def test_example_text():
     Paniertes Schnitzel mit Pommes frites
     Rinderbraten, Rotweinsauce und Spätzle"""
     text = text.decode("utf8") if PY2 else text
-    text_with_emoji = foodemoji.decorate(text)
+    text_decorated = foodemoji.decorate(text)
     for x in ( ':rooster:', ':red_apple:', ':green_heart:',
                ':dumpling:', ':potato:', ':french_fries:',
                ':cow:', ':wine_glass:' ):
-        assert x in text_with_emoji
+        assert x in text_decorated
 
 
     text = """Wir essen Mousakás mit Pommes und öhren.\nDas Hackfleisch wird aus Oktopus zubereitet."""
     text = text.decode("utf8") if PY2 else text
-    text_with_emoji = foodemoji.decorate(text)
+    text_decorated = foodemoji.decorate(text)
     for x in ( ':eggplant:', ':french_fries:', ':octopus:' ):
-        assert x in text_with_emoji
+        assert x in text_decorated
 
 def test_double_decorate():
     text = """Hähnchenbrust mit Apfelrotkraut
@@ -157,7 +165,7 @@ def test_position_in_whitespace():
         try:
             assert text_with_emoji == foodemoji.decorate(text)
         except AssertionError as e:
-            desc = "Error: `%s` != `%s`" % (text_with_emoji,foodemoji.decorate(text))
+            desc = "Error: Got `%s` expected `%s`" % (foodemoji.decorate(text).encode("utf8"), text_with_emoji.encode("utf8"))
             e.args = (desc, )
             raise e
 
@@ -167,7 +175,7 @@ def test_position_in_whitespace():
         try:
             assert text_with_emoji == foodemoji.decorate(text, line_by_line=True)
         except AssertionError as e:
-            desc = "Error: `%s` != `%s`" % (text_with_emoji,foodemoji.decorate(text, line_by_line=True))
+            desc = "Error: Got `%s` expected `%s`" % (foodemoji.decorate(text, line_by_line=True).encode("utf8"), text_with_emoji.encode("utf8"))
             e.args = (desc, )
             raise e
 
@@ -189,10 +197,11 @@ def test_same_result_whole_linebyline_approach():
         'Gegrillte Hähnchenbrust. ',
     ]
     for text in examples:
+        text = text.decode("utf8") if PY2 else text
         try:
             assert foodemoji.decorate(text, line_by_line=False) == foodemoji.decorate(text, line_by_line=True)
         except AssertionError as e:
-            desc = "Error: `%s` (line_by_line=False) != `%s` (line_by_line=True)" % (foodemoji.decorate(text, line_by_line=False), foodemoji.decorate(text, line_by_line=True))
+            desc = "Error: `%s` (line_by_line=False) != `%s` (line_by_line=True)" % (foodemoji.decorate(text, line_by_line=False).encode("utf8"), foodemoji.decorate(text, line_by_line=True).encode("utf8"))
             e.args = (desc, )
             raise e
 
@@ -216,7 +225,48 @@ def test_linebyline_multiple_occurrences():
         try:
             assert text_with_emoji == foodemoji.decorate(text, line_by_line=True)
         except AssertionError as e:
-            desc = "Error: `%s` != `%s`" % (text_with_emoji,foodemoji.decorate(text, line_by_line=True))
+            desc = "Error: Got `%s` expected `%s`" % (foodemoji.decorate(text, line_by_line=True).encode("utf8"), text_with_emoji.encode("utf8"))
+            e.args = (desc, )
+            raise e
+
+
+def test_unicode():
+    if not PY2:
+        print("Skipping test_unicode on Python 3")
+        return
+    
+    pairs = [
+        ("Grießflammerie", "Grießflammerie"),
+        (u"Grießflammerie", "Grießflammerie"),
+        ("Kürbis", "Kürbis :jack-o-lantern:"),
+        (u"Kürbis", u"Kürbis :jack-o-lantern:"),
+        ("Curry-soße", "Curry-soße"),
+        (u"Curry-soße", "Curry-soße"),
+    ]
+    
+    # Without decoding. Expecting errors.
+    for text, text_with_emoji in pairs:
+        try:
+            foodemoji.decorate(text)
+        except TypeError as e:
+            if isinstance(text, unicode):
+                raise e
+        except Exception as e:
+            desc = "Error: Unexpected %r for %r" % (e, text)
+            raise Exception(desc)
+        else:
+            if not isinstance(text, unicode):
+                desc = "Error: Expected TypeError not raised for %r" % (text)
+                raise Exception(desc)
+    
+    # With decoding. No errors expected.
+    for text, text_with_emoji in pairs:
+        text = text.decode("utf8") if PY2 and not isinstance(text, unicode) else text
+        text_with_emoji = text_with_emoji.decode("utf8") if PY2 and not isinstance(text_with_emoji, unicode) else text_with_emoji
+        try:
+            assert text_with_emoji == foodemoji.decorate(text)
+        except AssertionError as e:
+            desc = "Error: `%s` should be `%s`" % (foodemoji.decorate(text).encode("utf8"), text_with_emoji.encode("utf8"))
             e.args = (desc, )
             raise e
 
@@ -240,7 +290,7 @@ def test_valid_emojis():
                     assert len(emoji.emojize(x, use_aliases=False)) in (1, 2)
                 except AssertionError as e:
                     print("Error: Invalid emoji: `%s`" % x)
-                    print("converted to `%s`" % emoji.emojize(x, use_aliases=False))
+                    print("converted to `%s`" % emoji.emojize(x, use_aliases=False).encode("utf8"))
                     print("Length: %d" % len(emoji.emojize(x, use_aliases=False)))
                     e.args = ("Invalid emoji: `%s`" % x, )
                     raise e
@@ -249,7 +299,7 @@ def test_valid_emojis():
                 assert len(emoji.emojize(x, use_aliases=True)) in (1, 2, 4, 5)
             except AssertionError as e:
                 print("Error: Invalid emoji: `%s`" % x)
-                print("converted to `%s`" % emoji.emojize(x, use_aliases=True))
+                print("converted to `%s`" % emoji.emojize(x, use_aliases=True).encode("utf8"))
                 print("Length: %d" % len(emoji.emojize(x, use_aliases=True)))
                 e.args = ("Invalid emoji: `%s`" % x, )
                 raise e
@@ -271,7 +321,7 @@ def test_valid_emojis():
                     assert ord(emoji.emojize(x, use_aliases=False)[0]) > 254
                 except AssertionError as e:
                     print("Error: Invalid emoji: `%s`" % x)
-                    print("converted to `%s`" % emoji.emojize(x, use_aliases=False))
+                    print("converted to `%s`" % emoji.emojize(x, use_aliases=False).encode("utf8"))
                     print("Length: %d" % len(emoji.emojize(x, use_aliases=False)))
                     e.args = ("Invalid emoji: `%s`" % x, )
                     raise e
@@ -280,7 +330,7 @@ def test_valid_emojis():
                 assert len(emoji.emojize(x, use_aliases=True)) in (1, 2)
             except AssertionError as e:
                 print("Error: Invalid emoji: `%s`" % x)
-                print("converted to `%s`" % emoji.emojize(x, use_aliases=True))
+                print("converted to `%s`" % emoji.emojize(x, use_aliases=True).encode("utf8"))
                 print("Length: %d" % len(emoji.emojize(x, use_aliases=True)))
                 e.args = ("Invalid emoji: `%s`" % x, )
                 raise e
