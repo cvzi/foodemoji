@@ -13,7 +13,7 @@ Unicode country code emoji flags for Python
     >>> emoji.emojize(foodemoji.decorate("Apfelrotkraut"))
     'Apfelrotkraut 🍎'
 """
-__version__ = '1.0.4'
+__version__ = '1.1.0'
 __author__ = 'cuzi'
 __email__ = 'cuzi@openmail.cc'
 __source__ = 'https://github.com/cvzi/foodemoji'
@@ -89,14 +89,14 @@ def decorate(text, line_by_line=False):
     :return: the decorated text
     :rtype: str
     """
-    
+
     if _PY2:
         if not isinstance(text, unicode):
             try:
                 text = text.decode("ascii", errors="strict")
             except UnicodeDecodeError:
                 raise TypeError("Argument 'text' must be unicode.")
-    
+
     if line_by_line:
         return decorate_lines(text)
     return decorate_whole(text)
