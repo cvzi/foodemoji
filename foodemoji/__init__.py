@@ -54,6 +54,8 @@ _wordend = None
 _PY2 = sys.version_info.major is 2
 
 def _load():
+    "Load from foodemojis.json file and compile regular expressions"
+
     global _emoji_re
     global _wordend
 
@@ -111,7 +113,7 @@ def decorate_whole(text):
     :rtype: str
     """
 
-    if len(_emoji_re) is None:
+    if _emoji_re is None:
         _load()
 
     for emo in _emoji_re:
@@ -140,7 +142,7 @@ def decorate_lines(text):
      - Line by line approch
      - An emoji can only occur once per line (last occurunce)
     """
-    if len(_emoji_re) is None:
+    if _emoji_re is None:
         _load()
 
     # Split by lines
