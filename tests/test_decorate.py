@@ -25,6 +25,7 @@ PY2 = sys.version_info.major is 2
 
 def test_check_circular():
     foodemoji.decorate("ensure loaded") # ensure emojis are loaded
+    assert len(foodemoji._emoji_re) > 0
 
     text = ' '.join(foodemoji._emoji_re.keys())
     if text != foodemoji.decorate(text):
@@ -41,6 +42,7 @@ def test_check_circular():
 
 def test_good_regex():
     foodemoji.decorate("ensure loaded") # ensure emojis are loaded
+    assert len(foodemoji._emoji_re) > 0
 
     def is_in_brackets(query, text):
 
@@ -240,7 +242,7 @@ def test_unicode():
     if not PY2:
         print("Skipping test_unicode on Python 3")
         return
-    
+
     pairs = [
         ("Grießflammerie", "Grießflammerie"),
         (u"Grießflammerie", "Grießflammerie"),
@@ -249,7 +251,7 @@ def test_unicode():
         ("Curry-soße", "Curry-soße"),
         (u"Curry-soße", "Curry-soße"),
     ]
-    
+
     # Without decoding. Expecting errors.
     for text, text_with_emoji in pairs:
         try:
@@ -264,7 +266,7 @@ def test_unicode():
             if not isinstance(text, unicode):
                 desc = "Error: Expected TypeError not raised for %r" % (text)
                 raise Exception(desc)
-    
+
     # With decoding. No errors expected.
     for text, text_with_emoji in pairs:
         text = text.decode("utf8") if PY2 and not isinstance(text, unicode) else text
@@ -279,8 +281,9 @@ def test_unicode():
 
 def test_valid_emojis():
     import emoji
-    
+
     foodemoji.decorate("ensure loaded") # ensure emojis are loaded
+    assert len(foodemoji._emoji_re) > 0
 
     if PY2:
         # Python 2
