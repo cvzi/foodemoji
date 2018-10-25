@@ -74,9 +74,12 @@ def _load():
         if _PY2:
             emokey = emokey.encode('utf-8')
         _emoji_re[emokey] = []
-        for q in emoji_list[emo]:
-            _emoji_re[emokey].append(re.compile(q,flags=re.MULTILINE|re.IGNORECASE))
-
+        try:
+            for q in emoji_list[emo]:
+                _emoji_re[emokey].append(re.compile(q,flags=re.MULTILINE|re.IGNORECASE|re.UNICODE))
+        except re.error as e:
+            e.args = ("%s: '%s' -> %s" % (str(e.args[0]), str(emokey),str(q)),)
+            raise e
 
 def decorate(text, line_by_line=False):
     """Decorate text with food-specific emoji in the form ':emoji_name:'
@@ -86,6 +89,14 @@ def decorate(text, line_by_line=False):
     :return: the decorated text
     :rtype: str
     """
+    
+    if _PY2:
+        if not isinstance(text, unicode):
+            try:
+                text = text.decode("ascii", errors="strict")
+            except UnicodeDecodeError:
+                raise TypeError("Argument 'text' must be unicode.")
+    
     if line_by_line:
         return decorate_lines(text)
     return decorate_whole(text)
