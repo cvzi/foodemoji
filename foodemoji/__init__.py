@@ -1,11 +1,12 @@
 ﻿# -*- coding: utf-8 -*-
 # https://github.com/cvzi/foodemoji
 """
+foodemoji
+=========
+
 Decorate a German text (e.g. restaurant menu) with food specific emojis
 https://github.com/cvzi/foodemoji
 
-Unicode country code emoji flags for Python
-~~~~~~~~~~~~~~~~
     >>> import foodemoji
     >>> foodemoji.decorate("Apfelrotkraut")
     'Apfelrotkraut :red_apple:'
@@ -54,7 +55,12 @@ _wordend = None
 _PY2 = sys.version_info.major is 2
 
 def _load():
-    "Load from foodemojis.json file and compile regular expressions"
+    """Load from :ref:`foodemojis.json <foodemojis-json>` file and compile regular expressions
+    Automatically called on first use :func:`decorate`
+
+     :raises re.error: if the message_body is not a basestring
+
+    """
 
     global _emoji_re
     global _wordend
@@ -90,6 +96,7 @@ def decorate(text, line_by_line=False):
     :param bool line_by_line: if true the text is decorated line by line and an emoji can only occur once per line.
     :return: the decorated text
     :rtype: str
+    :raises TypeError: If the text is not a unicode string and not pure ascii (Only Python 2.x)
     """
 
     if _PY2:
@@ -108,9 +115,9 @@ def decorate_whole(text):
      - Whole text at once approch
      - Emoji can occur several times per line
 
-    :param str text: the text to decorate
+    :param unicode text: the text to decorate
     :return: the decorated text
-    :rtype: str
+    :rtype: unicode
     """
 
     if _emoji_re is None:
@@ -141,6 +148,10 @@ def decorate_lines(text):
     """Decorates text with food-specific emojis
      - Line by line approch
      - An emoji can only occur once per line (last occurunce)
+
+    :param unicode text: the text to decorate
+    :return: the decorated text
+    :rtype: unicode
     """
     if _emoji_re is None:
         _load()
