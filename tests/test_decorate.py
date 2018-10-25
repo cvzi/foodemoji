@@ -24,6 +24,8 @@ except AssertionError as e:
 PY2 = sys.version_info.major is 2
 
 def test_check_circular():
+    foodemoji.decorate("ensure loaded") # ensure emojis are loaded
+
     text = ' '.join(foodemoji._emoji_re.keys())
     if text != foodemoji.decorate(text):
         # Find the circular emoji
@@ -38,6 +40,8 @@ def test_check_circular():
                 raise e
 
 def test_good_regex():
+    foodemoji.decorate("ensure loaded") # ensure emojis are loaded
+
     def is_in_brackets(query, text):
 
         if query in text:
@@ -68,6 +72,8 @@ def test_good_regex():
 
 def test_basic():
     pairs = [
+        ("", ""), # empty
+        (" ", " "), # space
         ("Fish & chips", "Fish :fish: & chips :french_fries:"), # circular
         ("Tintenfisch", "Tintenfisch :squid:"), # no fish
         ("Haifisch", "Haifisch :fish:"),
@@ -273,6 +279,8 @@ def test_unicode():
 
 def test_valid_emojis():
     import emoji
+    
+    foodemoji.decorate("ensure loaded") # ensure emojis are loaded
 
     if PY2:
         # Python 2
