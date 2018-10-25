@@ -49,7 +49,7 @@ import re
 import sys
 import os
 
-_emoji_re = {}
+_emoji_re = None
 _wordend = None
 _PY2 = sys.version_info.major is 2
 
@@ -111,7 +111,7 @@ def decorate_whole(text):
     :rtype: str
     """
 
-    if len(_emoji_re) == 0:
+    if len(_emoji_re) is None:
         _load()
 
     for emo in _emoji_re:
@@ -140,7 +140,7 @@ def decorate_lines(text):
      - Line by line approch
      - An emoji can only occur once per line (last occurunce)
     """
-    if len(_emoji_re) == 0:
+    if len(_emoji_re) is None:
         _load()
 
     # Split by lines
