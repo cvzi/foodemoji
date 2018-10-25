@@ -77,7 +77,7 @@ def _load():
         try:
             for q in emoji_list[emo]:
                 _emoji_re[emokey].append(re.compile(q,flags=re.MULTILINE|re.IGNORECASE|re.UNICODE))
-        except re.error as e:
+        except re.error as e: # pragma: no cover
             e.args = ("%s: '%s' -> %s" % (str(e.args[0]), str(emokey),str(q)),)
             raise e
 
