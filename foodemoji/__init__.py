@@ -97,20 +97,19 @@ def decorate(text, line_by_line=False):
     """Decorate text with food-specific emoji in the form ':emoji_name:'
 
     :param str text: the text to decorate
-    :param bool line_by_line: if true the text is decorated line by line and 
+    :param bool line_by_line: if true the text is decorated line by line and
     an emoji can only occur once per line.
     :return: the decorated text
     :rtype: str
-    :raises TypeError: If the text is not a unicode string and not pure 
+    :raises TypeError: If the text is not a unicode string and not pure
     ascii (Only Python 2.x)
     """
 
-    if _PY2:
-        if not isinstance(text, unicode):
-            try:
-                text = text.decode("ascii", errors="strict")
-            except UnicodeDecodeError:
-                raise TypeError("Argument 'text' must be unicode.")
+    if _PY2 and not isinstance(text, unicode):
+        try:
+            text = text.decode("ascii", errors="strict")
+        except UnicodeDecodeError:
+            raise TypeError("Argument 'text' must be unicode.")
 
     if line_by_line:
         return decorate_lines(text)
@@ -135,15 +134,8 @@ def decorate_whole(text):
             cursor = 0
             m = regex.search(text, pos=cursor)
             while m:
-                # find next space:
-                lastchar = m.group(0)[-1]
-                if len(lastchar.strip()) == 0:
-                    space = m.end()-1  # last char in pattern is white space
-                else:  # find next whitespace or end of line
-                    space = _wordend.search(text, pos=m.end()).start()
-
-                # put emoji in the whitespace
-                text = text[:space] + ' ' + emo + text[space:]
+                # Put emoji in next whitespace:
+                text, space = _addEmojiInNextWhitespace(text, m, emo)
 
                 cursor = space + len(emo) + 1
 
@@ -186,15 +178,8 @@ def decorate_lines(text):
                         cursor -= last[1] - last[0]
                         m = regex.search(line, pos=cursor)
 
-                    # find next space:
-                    lastchar = m.group(0)[-1]
-                    if len(lastchar.strip()) == 0:
-                        space = m.end()-1  # last char in pattern is white space
-                    else:  # find next whitespace or end of line
-                        space = _wordend.search(line, pos=m.end()).start()
-
-                    # put emoji in the whitespace
-                    line = line[:space] + ' ' + emo + line[space:]
+                    # Put emoji in next whitespace:
+                    line, space = _addEmojiInNextWhitespace(line, m, emo)
 
                     cursor = space + len(emo) + 1
 
@@ -207,6 +192,20 @@ def decorate_lines(text):
                 text[i] = line
 
     return ''.join(text)
+
+
+def _addEmojiInNextWhitespace(text, match, emoji):
+    """Return index of next whitespace"""
+    lastchar = match.group(0)[-1]
+    if len(lastchar.strip()) == 0:  # last char in pattern is white space
+        space = match.end()-1
+    else:  # find next whitespace or end of line
+        space = _wordend.search(text, pos=match.end()).start()
+
+    # Put emoji in whitespace
+    text = text[:space] + ' ' + emoji + text[space:]
+
+    return text, space
 
 
 if __name__ == '__main__':
