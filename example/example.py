@@ -5,7 +5,8 @@ except ImportError:
     import os
     sys.path.insert(0, '..')
     import foodemoji
-    print("Imported foodemoji from %s" % os.path.join(os.path.abspath(".."), "foodemoji"))
+    path = os.path.join(os.path.abspath(".."), "foodemoji")
+    print("Imported foodemoji from %s" % path)
 
 text = """Hähnchenbrust mit Apfelrotkraut
 Vegetarische Maultaschen

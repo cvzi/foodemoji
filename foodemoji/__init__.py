@@ -54,6 +54,7 @@ _emoji_re = None
 _wordend = None
 _PY2 = sys.version_info.major is 2
 
+
 def _load():
     """Load from :ref:`foodemojis.json <foodemojis-json>` file and compile
     regular expressions.
