@@ -55,7 +55,8 @@ _wordend = None
 _PY2 = sys.version_info.major is 2
 
 def _load():
-    """Load from :ref:`foodemojis.json <foodemojis-json>` file and compile regular expressions
+    """Load from :ref:`foodemojis.json <foodemojis-json>` file and compile
+    regular expressions.
     Automatically called on first use :func:`decorate`
 
      :raises re.error: if the message_body is not a basestring
@@ -66,10 +67,11 @@ def _load():
     global _wordend
 
     # Load json file
-    if os.path.isfile(os.path.join(os.path.dirname(__file__), 'foodemojis.json')): # pragma: no cover
-        with open(os.path.join(os.path.dirname(__file__), 'foodemojis.json'), 'rb') as fs:
+    filename = os.path.join(os.path.dirname(__file__), 'foodemojis.json')
+    if os.path.isfile(filename):  # pragma: no cover
+        with open(filename, 'rb') as fs:
             emoji_list = json.loads(fs.read().decode('utf-8'))
-    else: # pragma: no cover
+    else:  # pragma: no cover
         with pkg_resources.resource_stream(__name__, 'foodemojis.json') as fs:
             emoji_list = json.loads(fs.read().decode('utf-8'))
 
@@ -83,20 +85,24 @@ def _load():
             emokey = emokey.encode('utf-8')
         _emoji_re[emokey] = []
         try:
+            flags = re.MULTILINE | re.IGNORECASE | re.UNICODE
             for q in emoji_list[emo]:
-                _emoji_re[emokey].append(re.compile(q,flags=re.MULTILINE|re.IGNORECASE|re.UNICODE))
-        except re.error as e: # pragma: no cover
+                _emoji_re[emokey].append(re.compile(q, flags=flags))
+        except re.error as e:  # pragma: no cover
             e.args = ("%s: %r -> %r" % (str(e.args[0]), emokey, q),)
             raise e
+
 
 def decorate(text, line_by_line=False):
     """Decorate text with food-specific emoji in the form ':emoji_name:'
 
     :param str text: the text to decorate
-    :param bool line_by_line: if true the text is decorated line by line and an emoji can only occur once per line.
+    :param bool line_by_line: if true the text is decorated line by line and 
+    an emoji can only occur once per line.
     :return: the decorated text
     :rtype: str
-    :raises TypeError: If the text is not a unicode string and not pure ascii (Only Python 2.x)
+    :raises TypeError: If the text is not a unicode string and not pure 
+    ascii (Only Python 2.x)
     """
 
     if _PY2:
@@ -109,6 +115,7 @@ def decorate(text, line_by_line=False):
     if line_by_line:
         return decorate_lines(text)
     return decorate_whole(text)
+
 
 def decorate_whole(text):
     """Decorates text with food-specific emojis
@@ -130,8 +137,8 @@ def decorate_whole(text):
             while m:
                 # find next space:
                 lastchar = m.group(0)[-1]
-                if len(lastchar.strip()) == 0: # last char in pattern is white space
-                    space = m.end()-1
+                if len(lastchar.strip()) == 0:
+                    space = m.end()-1  # last char in pattern is white space
                 else:  # find next whitespace or end of line
                     space = _wordend.search(text, pos=m.end()).start()
 
@@ -143,6 +150,7 @@ def decorate_whole(text):
                 m = regex.search(text, pos=cursor)
 
     return text
+
 
 def decorate_lines(text):
     """Decorates text with food-specific emojis
@@ -180,8 +188,8 @@ def decorate_lines(text):
 
                     # find next space:
                     lastchar = m.group(0)[-1]
-                    if len(lastchar.strip()) == 0: # last char in pattern is white space
-                        space = m.end()-1
+                    if len(lastchar.strip()) == 0:
+                        space = m.end()-1  # last char in pattern is white space
                     else:  # find next whitespace or end of line
                         space = _wordend.search(line, pos=m.end()).start()
 
@@ -198,8 +206,8 @@ def decorate_lines(text):
 
                 text[i] = line
 
-
     return ''.join(text)
+
 
 if __name__ == '__main__':
     text = """Hähnchenbrust mit Hähnchensauce
@@ -209,7 +217,3 @@ Paniertes Schnitzel mit Schwein
 Rinderbraten mit Rindersauce"""
     print(decorate(text))
     print(decorate(text, line_by_line=True))
-
-
-
-
