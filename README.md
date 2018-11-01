@@ -5,6 +5,7 @@
 [![Build Status](https://travis-ci.org/cvzi/foodemoji.svg?branch=master)](https://travis-ci.org/cvzi/foodemoji)
 [![Documentation Status](https://readthedocs.org/projects/foodemoji/badge/?version=latest)](https://foodemoji.readthedocs.io/en/latest/?badge=latest)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/37b81de096584b068763271c6a52e441)](https://app.codacy.com/app/cvzi/foodemoji?utm_source=github.com&utm_medium=referral&utm_content=cvzi/foodemoji&utm_campaign=Badge_Grade_Dashboard)
+[![Maintainability](https://api.codeclimate.com/v1/badges/717455cf2690747284dc/maintainability)](https://codeclimate.com/github/cvzi/foodemoji/maintainability)
 
 Decorate a German text (e.g. restaurant menu) with food emojis
 
