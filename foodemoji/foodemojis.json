@@ -48,7 +48,7 @@
     ":honey_pot:" : ["honig"],
     ":poultry_leg:" : ["schlegel", "keule", "eisbein", "hachse", "hax[en]"],
     ":cheese_wedge:" : ["([^\\:]|^)cheese", "(?<!fleisch)käse", "gouda", "gorgonzola", "mozzarella", "formaggi", "parmesan(?!k)", 
-                       "grana padano", "ricotta", "cordon bleu"],
+                       "grana padano", "ricotta", "cordon bleu", "camembert"],
     ":pizza:" : ["([^\\:]|^)pizza", "lahmacun"],
     ":hamburger:" : ["(?<!\\:ham)burger"],
     ":burrito:" : ["([^\\:]|^)burrito","([^\\:]|^)wrap","fajita"],
