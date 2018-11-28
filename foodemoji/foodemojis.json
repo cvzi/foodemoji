@@ -85,7 +85,7 @@
     ":glass_of_milk:" : ["(\\b|\\s|^)milch(\\b|\\s|$)"],
     ":victory_hand:" : ["vegan"],
     ":green_heart:" : ["vegetarisch"],
-    ":custard:" : ["flan(\\s+|$)", "karamell?(\\s|-)?pudding", "cr.me br.l.{1,2}", "cr\\wme (c|k)aramell?", "crema catalana","crema cremada","brönnti"],
+    ":custard:" : ["flan(\\s+|$)", "karamell?(\\s|-)?pudding", "karamell?(\\s|-)?creme", "cr.me br.l.{1,2}", "cr\\wme (c|k)aramell?", "crema catalana","crema cremada","brönnti"],
     ":hot_pepper:" : ["chili","paprika","pepp?eroni"],
     ":fire:" : ["feuer" ,"feurig"],
     ":smiling_face_with_horns:" : ["dia[bv]olo", "teufel","teufli"],
