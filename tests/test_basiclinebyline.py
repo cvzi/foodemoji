@@ -15,10 +15,10 @@ except ImportError:
 
 try:
     import emoji
-    assert distutils.version.StrictVersion(emoji.__version__) >= distutils.version.StrictVersion('0.5.0')
+    assert distutils.version.StrictVersion(emoji.__version__) >= distutils.version.StrictVersion('0.5.2')
 except AssertionError as e:
-    print("Module/Package `emoji` is version %s, it needs to be at least version 0.5.0" % emoji.__version__)
-    e.args = ("emoji module version < 0.5.0", )
+    print("Module/Package `emoji` is version %s, it needs to be at least version 0.5.2" % emoji.__version__)
+    e.args = ("emoji module version < 0.5.2", )
     raise e
 
 PY2 = sys.version_info.major is 2
