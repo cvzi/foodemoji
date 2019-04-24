@@ -1,7 +1,7 @@
 {
     ":fish:" : ["(?<!lachs)forelle","lachs","karpfen","hecht", "barsch(\\s+|$)", "makrele", "kabeljau", "(\\b|\\s|^)aal",
                "dorsch", "pangasius", "(\\b|\\s|^)tuna", "hering", "saibling", "zander", "wels", 
-               "flunder", "barbe", "butt(?!er)", "scholle","seezunge", "tilapia", "scharbe", "dorade",
+               "flunder", "(?<!rha)barbe", "butt(?!er)", "scholle","seezunge", "tilapia", "scharbe", "dorade",
                "eisflunder", "lotte[^n]", "seeteufel",  "steinbeißer", "skantjes", "(\\b|\\s|^)hoki",
                "matjes", "schlemmerfilet", "(?<!tinten)fisch", "([^\\:]|^)fish"],
     ":squid:" : ["tintenfisch", "calamari", "calamares", "kalmar", "chipirones"],
@@ -31,7 +31,7 @@
     ":mushroom:" : ["pilz", "schwammerl", "champignon", "pfifferling", "morcheln", "kräuterseitling", "shiitake"],
     ":tangerine:" : ["orange","mandarine","apfelsine"],
     ":lemon:" : ["([^\\:]|^)lemon", "zitrone", "limone"],
-    ":peach:" : ["pfirsich", "nektarine", "aprikose"],
+    ":peach:" : ["pfirsis?ch", "nektarine", "aprikose"],
     ":mango:" : ["([^\\:]|^)mango"],
     ":pretzel:" : ["brez[en]"],
     ":baguette_bread:" : ["baguette(\\b|\\s|$)", "ciabatta"],

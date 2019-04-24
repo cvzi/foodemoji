@@ -91,6 +91,8 @@ def test_basic():
         ("Curry-soße", "Curry-soße"),
         ("Currywurst", "Currywurst :pig:"),
         ("Currydip", "Currydip"),
+        ("Flussbarbe", "Flussbarbe :fish:"),
+        ("Rhabarber", "Rhabarber"),
     ]
     for text, text_with_emoji in pairs:
         text = text.decode("utf8") if PY2 and not isinstance(text, unicode) else text
