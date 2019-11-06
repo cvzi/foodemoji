@@ -1,8 +1,10 @@
 Proposed in Emoji 12.0
 
-https://emojipedia.org/falafel/
-https://emojipedia.org/oyster/
-https://emojipedia.org/garlic/
 https://emojipedia.org/butter/
-https://emojipedia.org/onion/
-https://emojipedia.org/waffle/
+
+Proposed in Emoji 13.0
+https://emojipedia.org/olive/
+https://emojipedia.org/fondue/
+https://emojipedia.org/blueberries/
+https://emojipedia.org/tamale/
+https://emojipedia.org/bell-pepper/
