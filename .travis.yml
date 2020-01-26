@@ -12,16 +12,16 @@ python:
 # command to install dependencies
 install:
   - pip install -r tests/requirements.txt
-  - pip install python-coveralls
-  - pip install coverage
   - pip install nose
-  - pip install codacy-coverage
-  - pip install codecov
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.7' || $TRAVIS_PYTHON_VERSION == '3.8' ]]; then pip install python-coveralls; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.7' || $TRAVIS_PYTHON_VERSION == '3.8' ]]; then pip install coverage; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.7' || $TRAVIS_PYTHON_VERSION == '3.8' ]]; then pip install codacy-coverage; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.7' || $TRAVIS_PYTHON_VERSION == '3.8' ]]; then pip install codecov; fi
 # command to run tests
 script:
   - python setup.py test
   - pytest
-  - nosetests
+  - if [[ $TRAVIS_PYTHON_VERSION != 'nightly' ]]; then nosetests; fi
   - if [[ $TRAVIS_PYTHON_VERSION == '2.7' || $TRAVIS_PYTHON_VERSION == '3.8' ]]; then coverage run -a tests/test_basiclinebyline.py; fi
   - if [[ $TRAVIS_PYTHON_VERSION == '2.7' || $TRAVIS_PYTHON_VERSION == '3.8' ]]; then coverage run -a tests/test_decorate.py; fi
 # must be last (coverage will not track an installed module)
