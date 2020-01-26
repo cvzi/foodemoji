@@ -14,7 +14,7 @@ https://github.com/cvzi/foodemoji
     >>> emoji.emojize(foodemoji.decorate("Apfelrotkraut"))
     'Apfelrotkraut 🍎'
 """
-__version__ = '1.1.4'
+__version__ = '1.1.5'
 __author__ = 'cuzi'
 __email__ = 'cuzi@openmail.cc'
 __source__ = 'https://github.com/cvzi/foodemoji'
