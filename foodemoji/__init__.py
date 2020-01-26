@@ -52,7 +52,7 @@ import os
 
 _emoji_re = None
 _wordend = None
-_PY2 = sys.version_info.major is 2
+_PY2 = sys.version_info.major == 2
 
 
 def _load():
@@ -106,7 +106,7 @@ def decorate(text, line_by_line=False):
     ascii (Only Python 2.x)
     """
 
-    if _PY2 and not isinstance(text, unicode):
+    if _PY2 and not isinstance(text, unicode):  # noqa: F821
         try:
             text = text.decode("ascii", errors="strict")
         except UnicodeDecodeError:
