@@ -12,7 +12,7 @@ except ImportError:
     import foodemoji
     print("Imported foodemoji from %s" % os.path.abspath(os.path.join(include, "foodemoji")))
 
-PY2 = sys.version_info.major is 2
+PY2 = sys.version_info.major == 2
 
 text = """Erbsencremesuppe
 Mousse Tiramisu, Wackelpudding Kirsch (vegan)

@@ -15,13 +15,13 @@ except ImportError:
 
 try:
     import emoji
-    assert distutils.version.StrictVersion(emoji.__version__) >= distutils.version.StrictVersion('0.5.2')
+    assert distutils.version.StrictVersion(emoji.__version__) >= distutils.version.StrictVersion('0.5.4')
 except AssertionError as e:
-    print("Module/Package `emoji` is version %s, it needs to be at least version 0.5.2" % emoji.__version__)
-    e.args = ("emoji module version < 0.5.2", )
+    print("Module/Package `emoji` is version %s, it needs to be at least version 0.5.4" % emoji.__version__)
+    e.args = ("emoji module version < 0.5.4", )
     raise e
 
-PY2 = sys.version_info.major is 2
+PY2 = sys.version_info.major == 2
 
 def test_check_circular():
     foodemoji.decorate("ensure loaded") # ensure emojis are loaded
