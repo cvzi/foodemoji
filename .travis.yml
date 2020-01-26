@@ -22,12 +22,12 @@ script:
   - python setup.py test
   - pytest
   - nosetests
-  - if [[ $TRAVIS_PYTHON_VERSION != 'nightly' ]]; then coverage run -a tests/test_basiclinebyline.py; fi
-  - if [[ $TRAVIS_PYTHON_VERSION != 'nightly' ]]; then coverage run -a tests/test_decorate.py; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.7' || $TRAVIS_PYTHON_VERSION == '3.8' ]]; then coverage run -a tests/test_basiclinebyline.py; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.7' || $TRAVIS_PYTHON_VERSION == '3.8' ]]; then coverage run -a tests/test_decorate.py; fi
 # must be last (coverage will not track an installed module)
   - python setup.py install 
 after_success:
-  - if [[ $TRAVIS_PYTHON_VERSION != 'nightly' ]]; then coveralls; fi
-  - if [[ $TRAVIS_PYTHON_VERSION != 'nightly' ]]; then coverage xml; fi
-  - if [[ $TRAVIS_PYTHON_VERSION != 'nightly' ]]; then python-codacy-coverage -r coverage.xml; fi
-  - if [[ $TRAVIS_PYTHON_VERSION != 'nightly' ]]; then codecov; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.7' || $TRAVIS_PYTHON_VERSION == '3.8' ]]; then coveralls; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.7' || $TRAVIS_PYTHON_VERSION == '3.8' ]]; then coverage xml; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.7' || $TRAVIS_PYTHON_VERSION == '3.8' ]]; then python-codacy-coverage -r coverage.xml; fi
+  - if [[ $TRAVIS_PYTHON_VERSION == '2.7' || $TRAVIS_PYTHON_VERSION == '3.8' ]]; then codecov; fi
