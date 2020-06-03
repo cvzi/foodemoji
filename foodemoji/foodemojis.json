@@ -2,7 +2,7 @@
     ":fish:" : ["(?<!lachs)forelle","lachs","karpfen","hecht", "barsch(\\s+|$)", "makrele", "kabeljau", "(\\b|\\s|^)aal",
                "dorsch", "pangasius", "(\\b|\\s|^)tuna", "hering", "saibling", "zander", "wels", 
                "flunder", "(?<!rha)barbe(\\b|\\s+|$)", "butt(?!er)", "scholle","seezunge", "tilapia", "scharbe", "dorade",
-               "eisflunder", "lotte[^n]", "seeteufel",  "steinbeißer", "skantjes", "(\\b|\\s|^)hoki",
+               "eisflunder", "lotte[^n]", "seeteufel",  "steinbeißer", "skantjes", "(\\b|\\s|^)hoki", "merlan", "wittling",
                "matjes", "schlemmerfilet", "(?<!tinten)fisch", "([^\\:]|^)fish"],
     ":squid:" : ["tintenfisch", "calamari", "calamares", "kalmar", "chipirones"],
     ":lobster:" : ["hummer"],

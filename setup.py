@@ -18,6 +18,7 @@ setuptools.setup(
     version=version,
     author="cuzi",
     author_email="cuzi@openmail.cc",
+    license="MIT",
     description="Decorate German text with food specific emojis",
     long_description=long_description,
     long_description_content_type="text/markdown",
