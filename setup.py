@@ -29,7 +29,7 @@ setuptools.setup(
     zip_safe=True,
     test_suite="nose.collector",
     tests_require=["emoji", "nose"],
-    classifiers=(
+    classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 2.7",
@@ -45,5 +45,5 @@ setuptools.setup(
         "Topic :: Communications :: Chat",
         "Topic :: Printing",
         "Topic :: Text Processing :: General"
-    ),
+    ]
 )
