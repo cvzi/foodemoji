@@ -64,7 +64,7 @@
     ":curry_rice:" : ["([^\\:]|^)curry(?!(wurst)|(-?sauce)|(-?soße)|(-?dip))"],
     ":french_fries:" : ["pommes frites", "pommes(?!(\\s|-)frites)", "twisters", "chips"],
     ":stuffed_flatbread:" : ["döner"],
-    ":green_salad:" : ["salat"],
+    ":green_salad:" : ["(?<!wurst)salat"],
     ":dumpling:" : ["empanada", "maultasche", "pelmen", "pirogge", "pierogi", "schlickkrapfen", "schlutzkrapfen", "ravioli", 
                    "tortelloni","tortellini", "cappelletti", "sacchettoni"],
     ":bacon:" : ["([^\\:]|^)bacon","speck"],
