@@ -36,6 +36,7 @@ def test_basic():
         ("Greis", "Greis"),
         (u"Kürbis", u"Kürbis :jack-o-lantern:"),
         ("Reis\nPommes frites", "Reis :cooked_rice:\nPommes frites :french_fries:"),
+        ("Fair Trade Banane", "Fair Trade :smiling_face_with_halo: Banane :banana:"),
     ]
     for text, text_with_emoji in pairs:
         text = text.decode("utf8") if PY2 and not isinstance(text, unicode) else text
