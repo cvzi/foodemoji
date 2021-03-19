@@ -2,6 +2,8 @@ italienische-reise.txt
 italienische-reise_emoji.txt
 tests/italienische-reise.txt
 tests/italienische-reise_emoji.txt
+python3.6.bat
+python3.7.bat
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
