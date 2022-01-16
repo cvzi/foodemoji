@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # https://github.com/cvzi/foodemoji
 import sys
-import distutils.version
+import packaging.version
 
 try:
     import foodemoji
@@ -15,10 +15,10 @@ except ImportError:
 
 try:
     import emoji
-    assert distutils.version.StrictVersion(emoji.__version__) >= distutils.version.StrictVersion('0.5.4')
+    assert packaging.version.Version(emoji.__version__) >= packaging.version.Version('1.6.3')
 except AssertionError as e:
-    print("Module/Package `emoji` is version %s, it needs to be at least version 0.5.4" % emoji.__version__)
-    e.args = ("emoji module version < 0.5.4", )
+    print("Module/Package `emoji` is version %s, it needs to be at least version 1.6.3" % emoji.__version__)
+    e.args = ("emoji module version < 1.6.3", )
     raise e
 
 PY2 = sys.version_info.major == 2

@@ -28,7 +28,7 @@ setuptools.setup(
     package_data={"foodemoji": ["foodemojis.json"]},
     zip_safe=True,
     test_suite="nose.collector",
-    tests_require=["emoji", "nose"],
+    tests_require=["emoji", "nose", "packaging"],
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 2",
