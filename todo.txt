@@ -1,6 +1,6 @@
 
-Proposed in Emoji 15.0
-
-https://emojipedia.org/unicode-15.0/
+Proposed in Emoji 16.0
+expected to come to major platforms in late 2023 into 2024.
+https://emojipedia.org/unicode-16.0/
 
 
