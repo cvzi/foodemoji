@@ -14,7 +14,7 @@ https://github.com/cvzi/foodemoji
     >>> emoji.emojize(foodemoji.decorate("Apfelrotkraut"))
     'Apfelrotkraut 🍎'
 """
-__version__ = '1.1.10'
+__version__ = '1.1.11'
 __author__ = 'cuzi'
 __email__ = 'cuzi@openmail.cc'
 __source__ = 'https://github.com/cvzi/foodemoji'
@@ -99,11 +99,12 @@ def decorate(text, line_by_line=False):
 
     :param str text: the text to decorate
     :param bool line_by_line: if true the text is decorated line by line and
-    an emoji can only occur once per line.
+                              an emoji can only occur once per line.
     :return: the decorated text
     :rtype: str
     :raises TypeError: If the text is not a unicode string and not pure
-    ascii (Only Python 2.x)
+                       ascii (Only Python 2.x)
+
     """
 
     if _PY2 and not isinstance(text, unicode):  # noqa: F821
