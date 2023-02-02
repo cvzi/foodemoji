@@ -300,20 +300,20 @@ def test_valid_emojis():
 
             if not x.startswith(':flag_for_'):
                 try:
-                    assert len(emoji.emojize(x, use_aliases=False)) in (1, 2, 3)
+                    assert len(emoji.emojize(x)) in (1, 2, 3)
                 except AssertionError as e:
                     print("Error: Invalid emoji: `%s`" % x)
-                    print("converted to `%s`" % emoji.emojize(x, use_aliases=False).encode("utf8"))
-                    print("Length: %d" % len(emoji.emojize(x, use_aliases=False)))
+                    print("converted to `%s`" % emoji.emojize(x).encode("utf8"))
+                    print("Length: %d" % len(emoji.emojize(x)))
                     e.args = ("Invalid emoji: `%s`" % x, )
                     raise e
 
             try:
-                assert len(emoji.emojize(x, use_aliases=True)) in (1, 2, 3, 4, 5)
+                assert len(emoji.emojize(x, language='alias')) in (1, 2, 3, 4, 5)
             except AssertionError as e:
                 print("Error: Invalid emoji: `%s`" % x)
-                print("converted to `%s`" % emoji.emojize(x, use_aliases=True).encode("utf8"))
-                print("Length: %d" % len(emoji.emojize(x, use_aliases=True)))
+                print("converted to `%s`" % emoji.emojize(x, language='alias').encode("utf8"))
+                print("Length: %d" % len(emoji.emojize(x, language='alias')))
                 e.args = ("Invalid emoji: `%s`" % x, )
                 raise e
 
@@ -330,21 +330,21 @@ def test_valid_emojis():
 
             if not x.startswith(':flag_for_'):
                 try:
-                    assert len(emoji.emojize(x, use_aliases=False)) in (1,2)
-                    assert ord(emoji.emojize(x, use_aliases=False)[0]) > 254
+                    assert len(emoji.emojize(x)) in (1,2)
+                    assert ord(emoji.emojize(x)[0]) > 254
                 except AssertionError as e:
                     print("Error: Invalid emoji: `%s`" % x)
-                    print("converted to `%s`" % emoji.emojize(x, use_aliases=False).encode("utf8"))
-                    print("Length: %d" % len(emoji.emojize(x, use_aliases=False)))
+                    print("converted to `%s`" % emoji.emojize(x).encode("utf8"))
+                    print("Length: %d" % len(emoji.emojize(x)))
                     e.args = ("Invalid emoji: `%s`" % x, )
                     raise e
 
             try:
-                assert len(emoji.emojize(x, use_aliases=True)) in (1, 2)
+                assert len(emoji.emojize(x, language='alias')) in (1, 2)
             except AssertionError as e:
                 print("Error: Invalid emoji: `%s`" % x)
-                print("converted to `%s`" % emoji.emojize(x, use_aliases=True).encode("utf8"))
-                print("Length: %d" % len(emoji.emojize(x, use_aliases=True)))
+                print("converted to `%s`" % emoji.emojize(x, language='alias').encode("utf8"))
+                print("Length: %d" % len(emoji.emojize(x, language='alias')))
                 e.args = ("Invalid emoji: `%s`" % x, )
                 raise e
 
@@ -376,7 +376,7 @@ def test_book():
         print("#### %s" % str(e))
         return
 
-    text = emoji.emojize(foodemoji.decorate(text), use_aliases=True)
+    text = emoji.emojize(foodemoji.decorate(text), language='alias')
 
     with open('italienische-reise_emoji.txt', 'wb') as fres:
         fres.write(text.encode('utf-16'))
