@@ -22,7 +22,11 @@ classifiers = [
     "Topic :: Printing",
     "Topic :: Text Processing :: General",
 ]
-urls = {Homepage = "https://github.com/cvzi/foodemoji"}
+
+[project.urls]
+Homepage = "https://github.com/cvzi/foodemoji"
+Documentation = "https://foodemoji.readthedocs.io/"
+Downloads = "https://pypi.org/project/german-foodemoji/"
 
 [project.readme]
 file = "README.md"
